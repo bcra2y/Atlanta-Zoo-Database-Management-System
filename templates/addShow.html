@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Atlanta Zoo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <style>
+	input[type=text] {
+		width: 10%;
+	}
+	</style>
+</head>
+<body>
+
+<h1> Welcome to the Atlanta Zoo! Animals </h1>
+<p> This web page is under construction. Please bare with the Hakuna Matata developers of Atlanta Zoo</p>
+
+
+<!-- <div style="position: absolute; top: 255px; width: 200px; left: 100px; height: 25px">Min: </div>
+<div style="position: absolute; top: 255px; width: 200px; left: 250px; height: 25px">Max: </div> -->
+{% if shownotunique %}
+  <p style="color:red;">This show already exists</p>
+{% endif %}
+
+<form name="animalInsert" id="animalInsert" action="/admin_add_show" method = "post">
+	Name: <br><input type="text" name = "Name"><br>
+	Exhibit: <br>
+	<select name="Exhibit">
+		<option value=''></option>
+		<option value="Birds">Birds</option>
+		<option value="Jungle">Jungle</option>
+		<option value="Mountainous">Mountainous</option>
+		<option value="Pacific">Pacific</option>
+		<option value="Sahara">Sahara</option>
+	</select></br>
+	Staff: <br>
+	<select name = "Staff">
+		<option value=''></option>
+		{% for staff in staffs %}
+		<option value = {{staff.Username}}>{{staff.Username}}</option>
+		{% endfor %}
+	</select></br>
+
+	Date(mm/dd/yyyy): <br><input type="text" name = "Date"><br>
+	Time(hh:mm:ss): <br><input type="text" name = "Time"><br>
+	<input type="submit" id="addShow" value="Add Show">
+</form>
+
+<br><br>
+<form action="/user_home/admin" method="get">
+    <button name="Home" type="submit">Home</button>
+</form>
+
+
+</body>
+</html>

@@ -1,0 +1,2 @@
+We can put the commands we have for the create table and all the queries here:
+

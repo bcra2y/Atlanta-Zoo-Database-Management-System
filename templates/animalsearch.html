@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset="utf-8">
+    <title>Atlanta Zoo Animal Search Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <style>
+    input[type=text] {
+        width: 10%;
+    }
+    </style>
+</head>
+<body>
+    <h1> Animal Search Page </h1>
+    <p> If you want to see if we have a certain animal you can search for it here! </p>
+
+    <form name="animalSearch" id="animal" action="/visitor_search_animal" method = "post">
+        Name: <br>
+        <input type="text" name="Name"><br>
+
+        Species: <br>
+        <input type="text" name="Species"><br>
+
+        Exhibit: <br>
+        <select name="Exhibit">
+            <option value=''></option>
+            <option value="Birds">Birds</option>
+            <option value="Jungle">Jungle</option>
+            <option value="Mountainous">Mountainous</option>
+            <option value="Pacific">Pacific</option>
+            <option value="Sahara">Sahara</option>
+        </select></br>
+
+        Type: <br>
+        <select name="Type">
+            <option value=''></option>
+            <option value="Mammal">Mammal</option>
+            <option value="Bird">Bird</option>
+            <option value="Amphibian">Amphibian</option>
+            <option value="Reptile">Reptile</option>
+            <option value="Fish">Fish</option>
+            <option value="Invertebrate">Invertebrate</option>
+        </select></br><br></br>
+
+        <div style="position: absolute; top: 285px; width: 200px; left: 100px; height: 25px">Min:
+        </div>
+        <div style="position: absolute; top: 285px; width: 200px; left:250px; height: 25px">Max:
+        </div>
+        Age:
+        <input type="text" name = "AgeMin">
+        <input type="text" name = "AgeMax">
+        <br></br>
+
+        <input type="submit" value="search">
+</form>
+
+<br><br>
+<table id="animals" class="table table-striped">
+<tr>
+    <!-- var Testing = {{sqlQ}}+'1' -->
+    <th><a href="/Name/{{sqlQ}}+animalsearch.html">Name</a></th>
+    <th><a href="/Locations/{{sqlQ}}+animalsearch.html">Location</a></th>
+    <th><a href="/Age/{{sqlQ}}+animalsearch.html">Age</a></th>
+    <th><a href="/Species/{{sqlQ}}+animalsearch.html">Species</a></th>
+    <th><a href="/Type/{{sqlQ}}+animalsearch.html">Type</a></th>
+</tr>
+
+{% for animal in animals %}
+
+<tr>
+    <td>{{animal.Name}}</td>
+    <td><a href="/Location/{{animal.Location}}">{{animal.Location}}</a></td>
+    <td>{{animal.Age}}</td>
+    <td>{{animal.Species}}</td>
+    <td>{{animal.Type}}</td>
+    <!-- need to add select functionality
+     --- select should go to page that will display animal's information -->
+</tr>
+{% endfor %}
+
+
+</table>
+<form action="/user_home/visitor" method="get">
+    <button name="Home" type="submit">Home</button>
+</form>
+</body>
+</html>

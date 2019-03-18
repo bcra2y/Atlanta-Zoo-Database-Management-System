@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Atlanta Zoo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <form action="/register" method="post" enctype="multipart/form-data" >
+
+      {% if passwordnotmatch %}
+      <p style="color:red;">The inputted passwords do not match, please retry</p>
+      {% endif %}
+
+      {% if passwordnotlength %}
+      <p style="color:red;">The inputted password is not long enough, please try again</p>
+      {% endif %}
+
+      {% if usernamenotunique %}
+      <p style="color:red;">The username is taken, please use "another one" and try again</p>
+      {% endif %}
+
+      <div class="form-group">
+            <label>Email</label>
+            <input type="text" class="form-control" name="email"  placeholder=""
+                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                   title="Email does not follow the requested alphanumeric characters, does not have a '@' or a '.'">
+        </div>
+
+        <div class="form-group">
+            <label>Username</label>
+            <input type="text" class="form-control" name="username"  placeholder="****" required>
+        </div>
+
+        <div class="form-group">
+            <label>Password</label>
+            <input type="text" class="form-control" name="password"  placeholder="****" required>
+        </div>
+
+        <div class="form-group">
+            <label>Confirm Password</label>
+            <input type="text" class="form-control" name="confirm_password"  placeholder="****" required>
+        </div>
+
+
+        <button type="submit" id="btnsubmit" class="btn btn-default" name="register" value="staff">Register Staff</button>
+        <button type="submit" id="btnsubmit2" class="btn btn-default" name="register" value="visitor">Register Visitor</button>
+
+    </form>
+
+</body>
+</html>

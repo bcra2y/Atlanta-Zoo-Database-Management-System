@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Atlanta Zoo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<h1 style="text-align:center;">Staff Search for Animals</h1>
+
+<form name="animalSearch" id="animal" action="/staff_search_animals" method = "post">
+	Name: <br>
+	<input type="text" name = "Name"><br>
+	Species: <br>
+	<input type="text" name = "Species"><br>
+
+	Exhibit: <br>
+	<select name="Exhibit">
+		<option value=''></option>
+		<option value="Birds">Birds</option>
+		<option value="Jungle">Jungle</option>
+		<option value="Mountainous">Mountainous</option>
+		<option value="Pacific">Pacific</option>
+		<option value="Sahara">Sahara</option>
+	</select><br>
+	Type: <br>
+	<select name="Type">
+		<option value=''></option>
+		<option value="Mammal">Mammal</option>
+		<option value="Bird">Bird</option>
+		<option value="Amphibian">Amphibian</option>
+		<option value="Reptile">Reptile</option>
+		<option value="Fish">Fish</option>
+		<option value="Invertebrate">Invertebrate</option>
+	</select><br>
+  	Age:<br>
+	Min: <input type="text" name = "AgeMin">
+	Max: <input type="text" name = "AgeMax">
+	<br><br>
+	<input type="submit" value="search">
+</form>
+
+<br><br>
+
+
+<table class="table table-striped">
+<tr>
+	<th><a href="/StaffAnimalAge/{{sqlQ}}+staff_search_animals.html">Age</a></th>
+	<th><a href="/StaffAnimalType/{{sqlQ}}+staff_search_animals.html">Type</a></th>
+	<th><a href="/StaffAnimalName/{{sqlQ}}+staff_search_animals.html">Name</a></th>
+	<th><a href="/StaffAnimalSpecies/{{sqlQ}}+staff_search_animals.html">Species</a></th>
+	<th><a href="/StaffAnimalLocation/{{sqlQ}}+staff_search_animals.html">Location</a></th>
+	<th>Care for Animal</th></tr>
+{% for animal in animals %}
+<tr>
+	<td>{{animal.Age}}</td>
+	<td>{{animal.Type}}</td>
+	<td>{{animal.Name}}</td>
+	<td>{{animal.Species}}</td>
+	<td>{{animal.Location}}</td>
+    <td><a href="/staff_animal_care/{{animal.Name}}/{{animal.Species}}/{{animal.Location}}/{{animal.Type}}/{{animal.Age}}">Animal Care</a></td>
+</tr>
+{% endfor %}
+</table>
+
+<form action="/user_home/staff" method="get">
+    <button name="Home" type="submit">Home</button>
+</form>
+
+</body>
+</html>

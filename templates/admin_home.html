@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Atlanta Zoo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <style>
+        .btn-group button {
+            background-color: #4CAF50; /* Green background */
+            border: 1px solid green; /* Green border */
+            color: white; /* White text */
+            padding: 10px 24px; /* Some padding */
+            cursor: pointer; /* Pointer/hand icon */
+            width: 50%; /* Set a width if needed */
+            display: block; /* Make the buttons appear below each other */
+        }
+        .btn-group button:not(:last-child) {
+            border-bottom: none; /* Prevent double borders */
+        }
+        /* Add a background color on hover */
+        .btn-group button:hover {
+            background-color: #3e8e41;
+        }
+        .btn-group {
+            margin-top: 100px;
+            margin-bottom: 100px;
+            margin-left: 575px;
+            margin-right: 100px;
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+
+<h1 style="text-align:center;">Admin Home Page</h1>
+
+
+<div class="btn-group">
+    <form action="/admin_view_visitor" method="get">
+        <button name="admin_view_visitor" type="submit">View Visitors</button>
+    </form>
+    <form action="/admin_view_shows" method="get">
+        <button name="admin_view_shows" type="submit">View Shows</button>
+    </form>
+    <form action="/admin_add_show" method="get">
+        <button name="admin_add_show" type="submit">Add Show</button>
+    </form>
+    <form action="/admin_add_animal" method="get">
+        <button name="admin_add_animal" type="submit">Add Animals</button>
+    </form>
+    <form action="/admin_view_staff" method="get">
+        <button name="admin_view_staff" type="submit">View Staff</button>
+    </form>
+    <form action="/admin_view_animals" method="get">
+        <button name="admin_view_animals" type="submit">View Animals</button>
+    </form>
+    <form action="/admin_log_out" method="get">
+        <button name="admin_log_out" type="submit">Log Out</button>
+    </form>
+</div>
+</body>
+</html>

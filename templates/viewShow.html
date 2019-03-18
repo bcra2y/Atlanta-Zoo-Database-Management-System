@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Atlanta Zoo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <style>
+	input[type=text] {
+		width: 10%;
+	}
+	</style>
+</head>
+<body>
+
+<h1> Shows </h1>
+
+
+
+
+
+<form name="showSearch" id="show" action="/admin_view_shows" method = "post">
+	Name: <br>
+	<input type="text" name = "Name"><br>
+
+	DateAndTime: <br>
+        <input type="date" name = "DateAndTime"><br>
+
+	Exhibit: <br>
+	<select name="Exhibit">
+		<option value=''></option>
+		<option value="Birds">Birds</option>
+		<option value="Jungle">Jungle</option>
+		<option value="Mountainous">Mountainous</option>
+		<option value="Pacific">Pacific</option>
+		<option value="Sahara">Sahara</option>
+	</select></br>
+	</div>
+	<input type="submit" value="search">
+</form>
+<br><br>
+
+
+<table id="shows" class="table table-striped">
+<tr>
+	<th><a href="/AdminShowName/{{sqlQ}}+viewShow.html">Name</a></th>
+	<th><a href="/AdminShowLocation/{{sqlQ}}+viewShow.html">Location</a></th>
+	<th><a href="/AdminShowsDatetime/{{sqlQ}}+viewShow.html">DateAndTime</a></th>
+	<th>Delete?</th>
+
+</tr>
+
+{% for show in shows %}
+<tr>
+	<td>{{show.Name}}</td>
+	<td>{{show.Location}}</td>
+	<td>{{show.DateAndTime}}</td>
+	<td><a href="/AdminDeleteShow/{{sqlQ+show.Deletion+show.Name}}">{{show.Deletion}}</a></td>
+</tr>
+{% endfor %}
+</table>
+
+<form action="/user_home/admin" method="get">
+    <button name="Home" type="submit">Home</button>
+</form>
+
+</body>
+</html>

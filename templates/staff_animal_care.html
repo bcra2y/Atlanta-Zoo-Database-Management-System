@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Atlanta Zoo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<h1 style="text-align:center;">Staff Animal Care</h1>
+<form name="animalSearch" id="animalDisplay" action="/staff_animal_care/{{animal.Name}}/{{animal.Species}}/{{animal.Location}}/{{animal.Type}}/{{animal.Age}}" method = "get">
+<h3>Name:{{animal.Name}}</h3>
+<h3>Exhibit: {{animal.Location}}</h3>
+<h3>Species: {{animal.Species}}</h3>
+<h3>Type: {{animal.Type}}</h3>
+<h3>Age: {{animal.Age}} years</h3>
+<br><br>
+</form>
+
+<br><br>
+
+<form name="animalSearch" id="animal" action="/staff_animal_care/{{animal.Name}}/{{animal.Species}}/{{animal.Location}}/{{animal.Type}}/{{animal.Age}}" method = "post">
+
+    <div class="form-group">
+        <label>Note</label>
+        <input type="text" class="form-control" name="note"  placeholder="">
+    </div>
+
+    <button type="submit" id="btnsubmit" class="btn btn-default" name="log_note">Log Note</button>
+
+</form>
+
+
+
+<table class="table table-striped">
+<tr><th>Staff Member</th><th>Note</th><th>Time</th></tr>
+{% for note in notes %}
+<tr>
+	<td>{{note.StaffName}}</td>
+	<td>{{note.Content}}</td>
+	<td>{{note.DateAndTime}}</td>
+</tr>
+{% endfor %}
+</table>
+
+</body>
+</html>

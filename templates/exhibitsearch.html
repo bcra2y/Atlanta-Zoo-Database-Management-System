@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset="utf-8">
+    <title>Atlanta Zoo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <style>
+    input[type=text] {
+        width: 10%;
+    }
+    </style>
+</head>
+<body>
+    <h1> Exhibit Search Page </h1>
+    <p> If you want to see if we have a certain exhibit you can search for it here! </p>
+
+    <form name="exhibitSearch" id="exhibit" action="/visitor_search_exhibit" method = "post">
+
+        Exhibit: <br>
+        <select name="Exhibit">
+            <option value=''></option>
+            <option value="Birds">Birds</option>
+            <option value="Jungle">Jungle</option>
+            <option value="Mountainous">Mountainous</option>
+            <option value="Pacific">Pacific</option>
+            <option value="Sahara">Sahara</option>
+        </select></br>
+
+        WaterFeature: <br>
+        <select name="WaterFeature">
+        	<option value=''></option>
+        	<option value=0>No</option>
+        	<option value=1>Yes</option>
+        </select></br>
+
+        Size: <br>
+        <input type="number" name = "Size"></br>
+
+        Num Animals:<br>
+
+        Min
+        <input type="text" name = "Minimum">
+
+        Max
+        <input type="text" name = "Maximum">
+        <br>
+        <br>
+        <input type="submit" value="search">
+        </br>
+    </form>
+<br><br>
+
+<br><br>
+<table id="exhibits" class="table table-striped">
+<tr>
+    <!-- var Testing = {{sqlQ}}+'1' -->
+    <th><a href="/Exhibits/Name/{{sqlQ}}+exhibitsearch.html">Name</a></th>
+    <th><a href="/Exhibits/Size/{{sqlQ}}+exhibitsearch.html">Size</a></th>
+    <th><a href="/Exhibits/AnimalCount/{{sqlQ}}+exhibitsearch.html">Animal Count</a></th>
+    <th><a href="/Exhibits/WaterFeature/{{sqlQ}}+exhibitsearch.html">Water Feature</a></th>
+
+</tr>
+
+{% for exhibit in exhibits %}
+
+<tr>
+    <td>{{exhibit.Name}}</td>
+    <td>{{exhibit.Size}}</td>
+    <td>{{exhibit.AnimalCount}}</td>
+    <td>{{exhibit.WaterFeature}}</td>
+    <!-- need to add select functionality
+     --- select should go to page that will display logexhibitvisits or exhibithistory-->
+</tr>
+{% endfor %}
+</table>
+
+<form action="/user_home/visitor" method="get">
+    <button name="Home" type="submit">Home</button>
+</form>
+
+
+</body>
+</html>

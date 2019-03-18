@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset="utf-8">
+    <title>Atlanta Zoo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <style>
+    input[type=text] {
+        width: 10%;
+    }
+    </style>
+</head>
+<body>
+    <h1> Show History Page </h1>
+    <p> Here are all the shows you've visited! </p>
+
+    <form name="showHistory" id="showHistory" action="/visitor_view_show_history" method = "post">
+
+        Show Name: <br><input type="text" name = "Name"><br>
+
+        Exhibit: <br>
+        <select name="Location">
+            <option value=''></option>
+            <option value="Birds">Birds</option>
+            <option value="Jungle">Jungle</option>
+            <option value="Mountainous">Mountainous</option>
+            <option value="Pacific">Pacific</option>
+            <option value="Sahara">Sahara</option>
+        </select></br>
+
+        DateAndTime: <br>
+        <input type="date" name = "DateAndTime"><br>
+
+        <input type="submit" value="search">
+</form>
+
+<br><br>
+
+<br><br>
+<table id="all_shows" class="table table-striped">
+<tr>
+    <!-- var Testing = {{sqlQ}}+'1' -->
+    <th><a href="/ShowHistory/Name/{{sqlQ}}+showhistory.html">Name</a></th>
+    <th><a href="/ShowHistory/Datetime/{{sqlQ}}+showhistory.html">Date</a></th>
+    <th><a href="/ShowHistory/Exhibit/{{sqlQ}}+showhistory.html">Exhibit</a></th>
+</tr>
+
+{% for show in shows %}
+
+<tr>
+    <td>{{show.Name}}</td>
+    <td>{{show.Date}}</td>
+    <td>{{show.Exhibit}}</td>
+</tr>
+{% endfor %}
+</table>
+
+<form action="/user_home/visitor" method="get">
+    <button name="Home" type="submit">Home</button>
+</form>
+
+</body>
+</html>
